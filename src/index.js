@@ -1,10 +1,8 @@
 import express from "express";
-const app = new express();
+const app = express();
 import routes from "./routes.js";
 import path from "node:path";
 import dateAPI from "../utils/dateAPI.js";
-
-
 
 app.use(express.urlencoded({ extended: true }));
 
