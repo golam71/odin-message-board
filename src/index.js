@@ -4,18 +4,7 @@ import routes from "./routes.js";
 import path from "node:path";
 import dateAPI from "../utils/dateAPI.js";
 
-export let messages = [
-  {
-    text: "Hi there!",
-    user: "Golam",
-    added: dateAPI(),
-  },
-  {
-    text: "Hello World!",
-    user: "Jack",
-    added: dateAPI(),
-  },
-];
+
 
 app.use(express.urlencoded({ extended: true }));
 
