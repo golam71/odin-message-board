@@ -66,7 +66,8 @@
   }
 
   a.message,
-  .p404 a {
+  .p404 a,
+  .p500 a {
     color: inherit;
     text-decoration: none;
   }
@@ -100,7 +101,8 @@
   }
 
   nav a:hover,
-  .p404 a {
+  .p404 a,
+  .p500 a {
     color: var(--secondary);
   }
 
@@ -129,7 +131,8 @@
   .form input:focus,
   .form textarea:focus,
   .form a:focus,
-  button:focus {
+  .p404 a button:focus,
+  .p500 a button:focus {
     outline: var(--outline);
   }
 
@@ -146,6 +149,9 @@
     border: 1px solid var(--main);
   }
   .p404 {
+    padding: var(--padding);
+  }
+  .p500 {
     padding: var(--padding);
   }
   @view-transition {
