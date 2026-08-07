@@ -1,0 +1,147 @@
+<style>
+  :root {
+    --main: #d1d1d1cc;
+    --secondary: #fff;
+    --bg: #0c0a09;
+
+    --muted: rgb(100, 100, 100);
+    --bg-lighter: rgba(109, 109, 109, 0.123);
+
+    --border: 1px solid transparent;
+    --outline: 1px solid grey;
+    --radius: 10px;
+    --padding: 10px;
+  }
+
+  html {
+    scrollbar-gutter: stable;
+  }
+
+  * {
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: sans-serif;
+    background: var(--bg);
+    color: var(--main);
+
+    max-width: 500px;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  .main {
+    flex: 1;
+  }
+
+  .username {
+    color: var(--secondary);
+  }
+
+  .time {
+    color: var(--muted);
+    opacity: 0;
+  }
+
+  .message {
+    display: block;
+    padding: var(--padding);
+    border: var(--border);
+    border-radius: var(--radius);
+  }
+
+  a.message:hover {
+    background: var(--bg-lighter);
+  }
+
+  .message:hover .time {
+    opacity: 1;
+  }
+
+  a.message {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .text {
+    padding-top: 5px;
+  }
+
+  .namecontainer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  nav,
+  footer {
+    padding: var(--padding);
+  }
+
+  nav {
+    text-align: right;
+  }
+
+  footer {
+    text-align: center;
+  }
+
+  nav a {
+    margin-right: 10px;
+    color: var(--main);
+    text-decoration: none;
+  }
+
+  nav a:hover {
+    color: var(--secondary);
+  }
+
+  .form {
+    padding: var(--padding);
+  }
+
+  .form label {
+    display: block;
+  }
+
+  .form input,
+  .form textarea {
+    width: 100%;
+    margin: 10px 0 16px;
+    padding: var(--padding);
+
+    background: var(--bg-lighter);
+    color: var(--secondary);
+
+    border: var(--border);
+    border-radius: 5px;
+  }
+
+  .form input:focus,
+  .form textarea:focus,
+  .form a:focus,
+  button:focus {
+    outline: var(--outline);
+  }
+
+  button {
+    padding: 5px 8px;
+    background: var(--bg-lighter);
+    color: var(--main);
+
+    border: var(--border);
+    border-radius: 3px;
+  }
+
+  button:hover {
+    border: 1px solid var(--main);
+  }
+
+  @view-transition {
+    navigation: auto;
+  }
+</style>

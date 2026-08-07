@@ -1,0 +1,19 @@
+<%- include('./head.ejs') %>
+
+<div class="main">
+  <div class="message">
+    <div class="namecontainer">
+      <p class="username"><%= msg.user %></p>
+      <p class="time"><%= msg.added %></p>
+    </div>
+    <p class="text"><%= msg.text %></p>
+  </div>
+</div>
+
+<%- include('./footer.ejs') %>
+
+<style>
+  .time {
+    opacity: 1;
+  }
+</style>

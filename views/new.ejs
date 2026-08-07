@@ -1,0 +1,19 @@
+<%- include('./head.ejs') %>
+
+<form method="POST" action="/new" class="main form">
+  <label for="user">
+    Name :
+    <br />
+    <input name="user" id="user" class="user" type="text" />
+  </label>
+  <br />
+  <label for="text">
+    Text :
+    <br />
+    <textarea name="text" id="text" class="text" rows="10"></textarea>
+  </label>
+  <br />
+  <button type="submit">Submit</button>
+</form>
+
+<%- include('./footer.ejs') %>

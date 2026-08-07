@@ -1,0 +1,18 @@
+<%- include('./head.ejs') %>
+
+<div class="main">
+    <% messages.forEach((msg, index) => { %>
+        <div>
+            <a class="message"  href="/msg/<%= index %>">
+            <div class="namecontainer">
+                <p class="username"><%= msg.user %></p>
+                <p class="time"><%= msg.added %></p>
+            </div>
+
+            <p class="text"><%= msg.text %></p>
+        </a>
+    </div>
+    <% }); %>
+</div>
+
+<%- include('./footer.ejs') %>
