@@ -11,7 +11,7 @@ export const getNew = (req, res) => {
 
 export const getMessage = (req, res) => {
   const id = Number(req.params.id);
-  if (id >= 0 && id < messages.length) {
+  if (id >= 0 && id < messages.length && Number.isInteger(id)) {
     res.render("msg.ejs", { msg: messages[id] });
   } else {
     res.status(404).render("404.ejs");
@@ -21,11 +21,9 @@ export const getMessage = (req, res) => {
 export const postMessage = (req, res) => {
   const { user, text } = req.body;
   if (!user?.trim() || !text?.trim()) {
-    return res
-      .status(400)
-      .render("error.ejs", {
-        error: { message: "Name and message are required" },
-      });
+    return res.status(400).render("error.ejs", {
+      error: { message: "Name and message are required" },
+    });
   }
   messages.push({ user, text, added: dateAPI() });
   res.redirect("/");
