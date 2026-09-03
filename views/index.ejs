@@ -1,18 +1,17 @@
 <%- include('./head.ejs') %>
 
 <div class="main">
-    <% messages.forEach((msg, index) => { %>
-        <div>
-            <a class="message"  href="/msg/<%= index %>">
-            <div class="namecontainer">
-                <p class="username"><%= msg.user %></p>
-                <p class="time"><%= msg.added %></p>
-            </div>
-
-            <p class="text"><%= msg.text %></p>
-        </a>
+  <% messages.forEach((message) => { %>
+    <div>
+      <a class="message" href="/msg/<%= message.id %>">
+        <div class="namecontainer">
+          <p class="username"><%= message.username %></p>
+          <p class="time"><%= formatDate(message.created_at) %></p>
+        </div>
+        <p class="text"><%= message.msg %></p>
+      </a>
     </div>
-    <% }); %>
+  <% }); %>
 </div>
 
 <%- include('./footer.ejs') %>

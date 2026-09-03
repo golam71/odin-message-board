@@ -1,30 +1,51 @@
-import dateAPI from "../../utils/dateAPI.js";
-import { messages } from "../routes.js";
+import { formatDate } from "../../utils/dateAPI.js";
+import * as Message from "../models/message.js";
 
-export const getMessages = (req, res) => {
-  res.render("index.ejs", { messages });
-};
-
-export const getNew = (req, res) => {
-  res.render("new.ejs");
-};
-
-export const getMessage = (req, res) => {
-  const id = Number(req.params.id);
-  if (id >= 0 && id < messages.length && Number.isInteger(id)) {
-    res.render("msg.ejs", { msg: messages[id] });
-  } else {
-    res.status(404).render("404.ejs");
+export const listMessages = async (req, res, next) => {
+  try {
+    const messages = await Message.findAll();
+    res.render("index", { messages, formatDate });
+  } catch (error) {
+    next(error);
   }
 };
 
-export const postMessage = (req, res) => {
-  const { user, text } = req.body;
-  if (!user?.trim() || !text?.trim()) {
-    return res.status(400).render("error.ejs", {
-      error: { message: "Name and message are required" },
-    });
+export const showNewForm = (req, res) => {
+  res.render("new");
+};
+
+export const showMessage = async (req, res, next) => {
+  try {
+    const id = Number(req.params.id);
+    if (!Number.isInteger(id) || id < 1) {
+      return res.status(404).render("404");
+    }
+
+    const message = await Message.findById(id);
+    if (!message) {
+      return res.status(404).render("404");
+    }
+
+    res.render("msg", { message, formatDate });
+  } catch (error) {
+    next(error);
   }
-  messages.push({ user, text, added: dateAPI() });
-  res.redirect("/");
+};
+
+export const createMessage = async (req, res, next) => {
+  try {
+    const username = req.body.user?.trim();
+    const content = req.body.text?.trim();
+
+    if (!username || !content) {
+      return res.status(400).render("error", {
+        error: { message: "Name and message are required." },
+      });
+    }
+
+    await Message.create(username, content);
+    res.redirect("/");
+  } catch (error) {
+    next(error);
+  }
 };

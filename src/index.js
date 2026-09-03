@@ -2,7 +2,6 @@ import express from "express";
 const app = express();
 import routes from "./routes.js";
 import path from "node:path";
-import dateAPI from "../utils/dateAPI.js";
 
 app.use(express.urlencoded({ extended: true }));
 
@@ -12,6 +11,12 @@ app.set("view engine", "ejs");
 app.use(express.static(path.join(import.meta.dirname, "../public")));
 
 app.use(routes);
+
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500).render("error.ejs", { error: err });
+});
+
 app.listen(3000, () => {
   console.log("Running on port 3000");
 });

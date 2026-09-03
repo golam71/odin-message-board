@@ -3,10 +3,10 @@
 <div class="main">
   <div class="message">
     <div class="namecontainer">
-      <p class="username"><%= msg.user %></p>
-      <p class="time"><%= msg.added %></p>
+      <p class="username"><%= message.username %></p>
+      <p class="time"><%= formatDate(message.created_at) %></p>
     </div>
-    <p class="text"><%= msg.text %></p>
+    <p class="text"><%= message.msg %></p>
   </div>
 </div>
 
