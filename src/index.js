@@ -14,7 +14,9 @@ app.use(routes);
 
 app.use((err, req, res, next) => {
   console.error(err);
-  res.status(500).render("error.ejs", { error: err });
+  res.status(500).render("error.ejs", {
+    error: { message: "Something went wrong. Please try again later." },
+  });
 });
 
 app.listen(3000, () => {
